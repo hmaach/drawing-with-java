@@ -25,7 +25,7 @@ src/
 1. Compile all sources:
    ```bash
    make build
-````
+   ```
 
 2. Run the program:
 
