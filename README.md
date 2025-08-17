@@ -7,17 +7,20 @@ It demonstrates the use of custom interfaces (`Drawable`, `Displayable`) and obj
 ```
 
 src/
+│── geometrical_shapes/
+│    ├── Circle.java
+│    ├── Line.java
+│    ├── Point.java
+│    ├── Rectangle.java
+│    └── Triangle.java
 ├── interfaces/
 │    ├── Drawable.java
 │    └── Displayable.java
-└── geometrical_shapes/
-│        ├── Point.java
-│        ├── Line.java
-│        ├── Rectangle.java
-│        ├── Triangle.java
-│        ├── Circle.java
-│        └── Image.java
-└── Main.java
+├── utils/
+│    ├── ColorUtils.java
+│    └── Image.java
+│── Main.java
+└── Makefile
 
 ````
 
