@@ -33,28 +33,30 @@ public class Circle implements Drawable {
 
     @Override
     public void draw(Displayable displayable) {
-        int x0 = center.getX();
-        int y0 = center.getY();
-        int x = radius;
-        int y = 0;
-        int decisionOver2 = 1 - x;
 
-        while (y <= x) {
-            displayable.display(x0 + x, y0 + y, color);
-            displayable.display(x0 + y, y0 + x, color);
-            displayable.display(x0 - x, y0 + y, color);
-            displayable.display(x0 - y, y0 + x, color);
-            displayable.display(x0 - x, y0 - y, color);
-            displayable.display(x0 - y, y0 - x, color);
-            displayable.display(x0 + x, y0 - y, color);
-            displayable.display(x0 + y, y0 - x, color);
-            y++;
-            if (decisionOver2 <= 0) {
-                decisionOver2 += 2 * y + 1;
-            } else {
-                x--;
-                decisionOver2 += 2 * (y - x) + 1;
+        int center_x = this.center.getX();
+        int center_y = this.center.getY();
+        int raduis = this.radius;
+
+        int x = 0;
+        int y = -raduis;
+
+        while (x < (-y)) {
+            double y_mid = y + 0.5;
+            if (Math.pow(x, 2) + Math.pow(y_mid, 2) > Math.pow(radius, 2)) {
+                y += 1;
             }
+
+            displayable.display(center_x + x, center_y + y, this.color);
+            displayable.display(center_x - x, center_y + y, this.color);
+            displayable.display(center_x + x, center_y - y, this.color);
+            displayable.display(center_x - x, center_y - y, this.color);
+            displayable.display(center_x + y, center_y + x, this.color);
+            displayable.display(center_x - y, center_y + x, this.color);
+            displayable.display(center_x + y, center_y - x, this.color);
+            displayable.display(center_x - y, center_y - x, this.color);
+
+            x += 1;
         }
     }
 }

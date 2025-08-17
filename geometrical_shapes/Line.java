@@ -30,29 +30,28 @@ public class Line implements Drawable {
 
     @Override
     public void draw(Displayable displayable) {
-        int x1 = p1.getX(), y1 = p1.getY();
-        int x2 = p2.getX(), y2 = p2.getY();
 
-        int dx = Math.abs(x2 - x1);
-        int dy = Math.abs(y2 - y1);
-        int sx = x1 < x2 ? 1 : -1;
-        int sy = y1 < y2 ? 1 : -1;
-        int err = dx - dy;
+        int start_x = p1.getX();
+        int start_y = p1.getY();
 
-        while (true) {
-            displayable.display(x1, y1, color);
-            if (x1 == x2 && y1 == y2) {
-                break;
-            }
-            int e2 = 2 * err;
-            if (e2 > -dy) {
-                err -= dy;
-                x1 += sx;
-            }
-            if (e2 < dx) {
-                err += dx;
-                y1 += sy;
-            }
+        int end_x = p2.getX();
+        int end_y = p2.getY();
+
+        int dis_x = end_x - start_x; // distance between the x of start & end points
+        int dis_y = end_y - start_y; // distance between the y of start & end points
+
+        int steps = Math.max(Math.abs(dis_x), Math.abs(dis_y));
+
+        double new_x = start_x;
+        double new_y = start_y;
+
+        double x_inc = dis_x / steps;
+        double y_inc = dis_y / steps;
+
+        for (int i = 0; i <= steps; i++) {
+            displayable.display((int) Math.round(new_x), (int) Math.round(new_y), this.color);
+            new_x += x_inc;
+            new_y += y_inc;
         }
     }
 }
