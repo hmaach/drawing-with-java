@@ -1,26 +1,24 @@
-package packages.shapes;
+package geometrical_shapes;
 
-import packages.image.*;
+import interfaces.Displayable;
+import interfaces.Drawable;
+import java.awt.Color;
 
-class Line implements Drawable {
-    private Point a, b;
-    private Color color;
+public class Line implements Drawable {
 
-    public Line(Point a, Point b) {
-        this.a = a;
-        this.b = b;
-        this.color = Color.getRandomRGB();
+    private final Point p1;
+    private final Point p2;
+    private final Color color = Color.BLACK;
+
+    public Line(Point p1, Point p2) {
+        this.p1 = p1;
+        this.p2 = p2;
     }
 
-    public Line(Point a, Point b, Color color) {
-        this.a = a;
-        this.b = b;
-        this.color = color;
-    }
-
+    @Override
     public void draw(Displayable displayable) {
-        int x1 = a.x, y1 = a.y;
-        int x2 = b.x, y2 = b.y;
+        int x1 = p1.getX(), y1 = p1.getY();
+        int x2 = p2.getX(), y2 = p2.getY();
 
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
@@ -30,8 +28,9 @@ class Line implements Drawable {
 
         while (true) {
             displayable.display(x1, y1, color);
-            if (x1 == x2 && y1 == y2)
+            if (x1 == x2 && y1 == y2) {
                 break;
+            }
             int e2 = 2 * err;
             if (e2 > -dy) {
                 err -= dy;
@@ -44,7 +43,8 @@ class Line implements Drawable {
         }
     }
 
+    @Override
     public Color getColor() {
-        return this.color;
+        return color;
     }
 }
