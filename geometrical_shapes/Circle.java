@@ -20,8 +20,8 @@ public class Circle implements Drawable {
 
     public static Circle random(int width, int height) {
         Random rand = new Random();
-        Point center = new Point(rand.nextInt(width), rand.nextInt(height));
         int radius = rand.nextInt(width);
+        Point center = Point.random(width, height);
 
         return new Circle(center, radius);
     }
