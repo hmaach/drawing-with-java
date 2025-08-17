@@ -1,5 +1,5 @@
 build: clean
-	@javac Main.java packages/image/*.java packages/shapes/*.java -d build
+	@javac *.java -d build
 
 run:
 	@java -cp build Main
