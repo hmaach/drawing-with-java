@@ -3,6 +3,7 @@ package geometrical_shapes;
 import interfaces.Displayable;
 import interfaces.Drawable;
 import java.awt.Color;
+import java.util.Random;
 import utils.ColorUtils;
 
 public class Point implements Drawable {
@@ -20,6 +21,14 @@ public class Point implements Drawable {
         this.x = x;
         this.y = y;
         this.color = color;
+    }
+
+    public static Point random(int width, int height) {
+        Random rand = new Random();
+        int x = rand.nextInt(width);
+        int y = rand.nextInt(height);
+
+        return new Point(x, y);
     }
 
     public int getX() {

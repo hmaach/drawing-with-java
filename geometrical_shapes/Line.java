@@ -23,6 +23,13 @@ public class Line implements Drawable {
         this.color = color;
     }
 
+    public static Line random(int width, int height) {
+        Point p1 = Point.random(width, height);
+        Point p2 = Point.random(width, height);
+
+        return new Line(p1, p2);
+    }
+
     @Override
     public Color getColor() {
         return color;
