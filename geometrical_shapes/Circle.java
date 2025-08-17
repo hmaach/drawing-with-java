@@ -1,26 +1,34 @@
 package geometrical_shapes;
 
-
 import interfaces.Displayable;
 import interfaces.Drawable;
 import java.awt.Color;
 import java.util.Random;
+import utils.ColorUtils;
 
 public class Circle implements Drawable {
+
     private final Point center;
     private final int radius;
-    private final Color color = Color.GREEN;
+    private final Color color;
 
     public Circle(Point center, int radius) {
         this.center = center;
         this.radius = radius;
+        this.color = ColorUtils.random();
     }
 
     public static Circle random(int width, int height) {
         Random rand = new Random();
         Point center = new Point(rand.nextInt(width), rand.nextInt(height));
-        int radius = rand.nextInt(50) + 10;
+        int radius = rand.nextInt(width);
+
         return new Circle(center, radius);
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
     }
 
     @Override
@@ -48,10 +56,5 @@ public class Circle implements Drawable {
                 decisionOver2 += 2 * (y - x) + 1;
             }
         }
-    }
-
-    @Override
-    public Color getColor() {
-        return color;
     }
 }

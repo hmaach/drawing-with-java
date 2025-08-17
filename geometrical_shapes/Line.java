@@ -3,16 +3,29 @@ package geometrical_shapes;
 import interfaces.Displayable;
 import interfaces.Drawable;
 import java.awt.Color;
+import utils.ColorUtils;
 
 public class Line implements Drawable {
 
     private final Point p1;
     private final Point p2;
-    private final Color color = Color.BLACK;
+    private final Color color;
 
     public Line(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
+        this.color = ColorUtils.random();
+    }
+
+    public Line(Point p1, Point p2, Color color) {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.color = color;
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
     }
 
     @Override
@@ -41,10 +54,5 @@ public class Line implements Drawable {
                 y1 += sy;
             }
         }
-    }
-
-    @Override
-    public Color getColor() {
-        return color;
     }
 }

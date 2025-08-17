@@ -1,5 +1,6 @@
 
 import geometrical_shapes.*;
+import utils.Image;
 
 public class Main {
 

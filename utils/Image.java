@@ -1,5 +1,4 @@
-package geometrical_shapes;
-
+package utils;
 
 import interfaces.Displayable;
 import java.awt.Color;
@@ -8,6 +7,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class Image implements Displayable {
+
     private final BufferedImage img;
 
     public Image(int width, int height) {
@@ -30,6 +30,11 @@ public class Image implements Displayable {
         }
     }
 
-    public int getWidth() { return img.getWidth(); }
-    public int getHeight() { return img.getHeight(); }
+    public int getWidth() {
+        return img.getWidth();
+    }
+
+    public int getHeight() {
+        return img.getHeight();
+    }
 }
